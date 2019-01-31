@@ -8,7 +8,7 @@ class Traveller
     } 
     public function go () 
     { 
-        var_dump($this->trafficTool);
+        // var_dump($this->trafficTool);
         $this->trafficTool->go(); 
     } 
 }

@@ -8,14 +8,16 @@ class Container{
     public function bind($abstract, $concrete=null, $shared=false) {
             
         //如果提供的参数不是回调函数，则产生默认的回调函数 即concrete变为回调函数，不是一个字符串
+        // var_dump($concrete instanceof Closure);
         if(!$concrete instanceof Closure) {
             $concrete = $this->getClosure($abstract, $concrete);
  
         }
-          
+        // var_dump($concrete);
  
         $this->bindings[$abstract] = compact('concrete', 'shared');
- 
+        
+        print_r($this->bindings); 
     }
  
     //默认生成实例的回调函数
@@ -24,7 +26,7 @@ class Container{
         return function($container) use ($abstract, $concrete) {
  
             $method = ($abstract == $concrete) ? 'build' : 'make';
-            echo "回调函数".$abstract;
+            //echo "回调函数".$abstract;
             //var_dump( $concrete);
             //利用回调函数来实例化
             return $container->$method($concrete);
@@ -36,16 +38,16 @@ class Container{
     public function make($abstract) {
         
         $concrete = $this->getConcrete($abstract);
-        echo "make<br>";
+        //echo "make<br>";
         //var_dump($concrete);
         if($this->isBuildable($concrete, $abstract)) {
-            echo "build<br>";
+            echo "build<br/>";
             $object = $this->build($concrete);
         } else {
-            echo "make2<br>";
+            echo "make2<br/>";
             $object = $this->make($concrete);
         }
-        echo "make end";
+        //echo "make end";
         return $object;
     }
  
@@ -55,10 +57,10 @@ class Container{
  
     //获取绑定的回调函数
     protected function getConcrete($abstract) {
-        //var_dump($this->bindings);echo $abstract;
+        //var_dump($this->bindings);//echo $abstract;
         //如果是接口或者别名（Visit，studentaaaa）返回回调函数来执行；如果是实例类，则返回实例类字符串
         if(!isset($this->bindings[$abstract])) {
-            echo "stringabstract";
+            echo "stringabstract" . "<br/>";
             return $abstract;
         }
         
@@ -69,15 +71,15 @@ class Container{
     public function build($concrete) {
     
         if($concrete instanceof Closure) {
-            echo "instanceof";
+            //echo "instanceof";
             //执行回调函数
             return $concrete($this);
         }
-        echo "build detail<br>";
+        //echo "build detail<br>";
         $reflector = new ReflectionClass($concrete);
         //检查类是否可实例化
         if(!$reflector->isInstantiable()) {
-            echo $message = "Target [$concrete] is not instantiable";
+            //echo $message = "Target [$concrete] is not instantiable";
         }
         // 获取类的构造函数  
         $constructor = $reflector->getConstructor();

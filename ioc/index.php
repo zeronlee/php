@@ -16,6 +16,6 @@ $ioc->bind('zeronlee', 'Traveller');    //第一个参数'zeronlee'可以理解�
  
 //通过容器实现依赖注入，完成类的实例化
 //执行回调函数
-$traveller = $ioc->make('zeronlee');
-var_dump($traveller);
-$traveller->go();
+// $traveller = $ioc->make('zeronlee');
+// var_dump($traveller);
+// $traveller->go();

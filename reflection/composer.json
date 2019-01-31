@@ -1,0 +1,13 @@
+{
+    "name": "zeronlee/reflection",
+    "authors": [
+        {
+            "name": "zeronlee",
+            "email": "641007257@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "files": ["HttpApi"]
+    }
+}
