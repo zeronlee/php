@@ -8,6 +8,11 @@
     ],
     "require": {},
     "autoload": {
-        "files": ["HttpApi"]
+        "psr-4": {
+            "Src\\":"src/"
+        },
+        "classmap":[
+          "src"
+        ]
     }
 }

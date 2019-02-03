@@ -1,0 +1,17 @@
+{
+    "name": "zeronlee/autoload",
+    "authors": [
+        {
+            "name": "zeronlee",
+            "email": "641007257@qq.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "autoload":{
+        "psr-4":{
+            "Src\\": "src/"
+        }
+    }
+}

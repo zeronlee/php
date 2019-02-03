@@ -6,4 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Src\\HttpApi' => $baseDir . '/src/HttpApi.php',
+    'Src\\NotFoundService' => $baseDir . '/src/NotFoundService.php',
+    'Src\\StudentService' => $baseDir . '/src/StudentService .php',
+    'Src\\TestService' => $baseDir . '/src/TestService.php',
 );
